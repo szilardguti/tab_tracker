@@ -7,6 +7,12 @@ if (file_exists($filename)) {
 } else {
     $donations = [];
 }
+
+usort($donations, function ($a, $b) {
+    return $b['tabs'] - $a['tabs'];
+});
+
+$overall = 0;
 ?>
 
 <!DOCTYPE html>
@@ -24,12 +30,17 @@ if (file_exists($filename)) {
             <th>Tabs Donated</th>
         </tr>
         <?php foreach ($donations as $donor): ?>
+            <?php 
+                $tabs = $donor['tabs'];
+                $overall += $tabs;
+            ?>
             <tr>
                 <td><?= htmlspecialchars($donor['name']) ?></td>
-                <td><?= $donor['tabs'] ?></td>
+                <td><?= $tabs ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
     <br>
+    <h2>Overall tabs: <?=$overall?></h2>
 </body>
 </html>
