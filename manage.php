@@ -14,6 +14,10 @@ if (file_exists($filename)) {
     $donations = [];
 }
 
+usort($donations, function ($a, $b) {
+    return $b['tabs'] - $a['tabs'];
+});
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["name"]) && isset($_POST["tabs"])) {
         $name = $_POST["name"];
@@ -41,11 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     file_put_contents($filename, json_encode($donations, JSON_PRETTY_PRINT));
     header("Location: manage.php");
     exit;
-}
-else {
-    usort($donations, function ($a, $b) {
-        return $b['tabs'] - $a['tabs'];
-    });
 }
 
 $overall = 0;
