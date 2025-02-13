@@ -14,6 +14,7 @@ usort($donations, function ($a, $b) {
 
 $tops = array_slice($donations, 0, 3);
 $overall = 0;
+$goal = 1000;
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +73,12 @@ $overall = 0;
                 </tr>
             <?php endforeach; ?>
         </table>
-        <br>
+        <div class="mt-3"><h2>Progress</h2></div>
+        <div class="w-80">
+            <progress class="tab_prog" min=0 max="<?= $goal ?>" value="<?= $overall ?>"></progress>
+            
+            <p><span id="progress-text"><?= round(($overall / $goal) * 100) ?>%</span></p>
+        </div>
         <div class="mt-3"><h2>Overall tabs: <?=$overall?></h2></div>
     </div>
 </body>
