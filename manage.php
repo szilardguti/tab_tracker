@@ -56,11 +56,13 @@ $overall = 0;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>manager</title>
+    <title>Tab Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Manage Donations</h1>
-    <table >
+    <div class="mb-3 mt-3"><h1>Manage Donations</h1></div>
+    <table class="table table-hover">
         <tr>
             <th>Name</th>
             <th>Tabs Donated</th>
@@ -79,34 +81,35 @@ $overall = 0;
                         <input type="hidden" name="index" value="<?= $index ?>">
                         <input type="hidden" name="change" value="1">
                         <input type="hidden" name="update" value="true">
-                        <button type="submit">+</button>
+                        <button class="btn" type="submit">+</button>
                     </form>
                     <form method="post" style="display:inline;">
                         <input type="hidden" name="index" value="<?= $index ?>">
                         <input type="hidden" name="change" value="-1">
                         <input type="hidden" name="update" value="true">
-                        <button type="submit">-</button>
+                        <button class="btn" type="submit">-</button>
                     </form>
                     <form method="post" style="display:inline;">
                         <input type="hidden" name="index" value="<?= $index ?>">
                         <input type="hidden" name="delete" value="true">
-                        <button type="submit" onclick="return confirm('Are you sure you want to delete this entry?');">🗑️</button>
+                        <button class="btn" type="submit" 
+                        onclick="return confirm('Are you sure you want to delete this entry?');">🗑️</button>
                     </form>
                 </td>
             </tr>
         <?php endforeach; ?>
     </table>
-    <h2>Overall tabs: <?=$overall?></h2>
-    <br>
+    <div class="mt-3 mb-3"><h2>Overall tabs: <?=$overall?></h2></div>
 
-    <h2>Add a New Donation</h2>
+    <div class="mt-3 mb-3"><h2>Add a New Donation</h2></div>
     <form method="post">
-        <label>Name: <input type="text" name="name" required></label><br>
-        <label>Tabs Donated: <input type="number" name="tabs" required></label><br>
-        <button type="submit">Add</button>
+        <div class="mb-2"><label>Name: </label><input type="text" name="name" required></div>
+        <div class="mb-2"><label>Tabs: </label><input type="number" name="tabs" required></div>
+        <button class="btn" type="submit">Add</button>
     </form>
 
-    <br>
-    <a href="logout.php">Logout</a>
+    <div class="mt-5">
+        <button class="btn w-50" type="button" onclick="window.location.href='logout.php'">Logout</button>
+    </div>
 </body>
 </html>

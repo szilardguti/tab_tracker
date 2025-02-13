@@ -22,70 +22,58 @@ $overall = 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tab Tracker</title>
-    <style>
-        .podium {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            height: 200px;
-            margin-top: 20px;
-        }
-        .podium div {
-            width: 100px;
-            text-align: center;
-            padding: 10px;
-            font-weight: bold;
-            color: white;
-        }
-        .first { background: gold; height: 150px; }
-        .second { background: silver; height: 120px; }
-        .third { background: #cd7f32; height: 100px; }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Soda Tab Donations</h1>
-    <h2>Hall of Fame</h2>
-    <div class="podium">
-        <?php if (isset($tops[1])): ?>
-            <div class="second">
-                🥈 <?= htmlspecialchars($tops[1]['name']) ?><br>
-                <?= $tops[1]['tabs'] ?> tabs
-            </div>
-        <?php endif; ?>
+    <div class="container d-flex flex-column justify-content-center align-center w-80">
+        <div class="mb-3 mt-4 text-center"><h1 class="title">Tab Tracker</h1></div>
+        <div class="mb-3"><h2>Hall of Fame</h2></div>
+        <div class="podium">
+            <?php if (isset($tops[1])): ?>
+                <div class="second">
+                    <div class="medal p-0">🥈</div>
+                    <?= htmlspecialchars($tops[1]['name']) ?><br>
+                    <?= $tops[1]['tabs'] ?> tabs
+                </div>
+            <?php endif; ?>
 
-        <?php if (isset($tops[0])): ?>
-            <div class="first">
-                🥇 <?= htmlspecialchars($tops[0]['name']) ?><br>
-                <?= $tops[0]['tabs'] ?> tabs
-            </div>
-        <?php endif; ?>
+            <?php if (isset($tops[0])): ?>
+                <div class="first">
+                    <div class="medal p-0">🥇</div>
+                    <?= htmlspecialchars($tops[0]['name']) ?><br>
+                    <?= $tops[0]['tabs'] ?> tabs
+                </div>
+            <?php endif; ?>
 
-        <?php if (isset($tops[2])): ?>
-            <div class="third">
-                🥉 <?= htmlspecialchars($tops[2]['name']) ?><br>
-                <?= $tops[2]['tabs'] ?> tabs
-            </div>
-        <?php endif; ?>
-    </div>
+            <?php if (isset($tops[2])): ?>
+                <div class="third">
+                    <div class="medal p-0">🥉</div>
+                    <?= htmlspecialchars($tops[2]['name']) ?><br>
+                    <?= $tops[2]['tabs'] ?> tabs
+                </div>
+            <?php endif; ?>
+        </div>
 
-    <h2>Donations</h2>
-    <table border="1">
-        <tr>
-            <th>Name</th>
-            <th>Tabs Donated</th>
-        </tr>
-        <?php foreach ($donations as $donor): ?>
-            <?php 
-                $tabs = $donor['tabs'];
-                $overall += $tabs;
-            ?>
+        <div class="mt-3 mb-3"><h2>Donations</h2></div>
+        <table class="table table-dark table-hover">
             <tr>
-                <td><?= htmlspecialchars($donor['name']) ?></td>
-                <td><?= $tabs ?></td>
+                <th>Name</th>
+                <th>Tabs Donated</th>
             </tr>
-        <?php endforeach; ?>
-    </table>
-    <br>
-    <h2>Overall tabs: <?=$overall?></h2>
+            <?php foreach ($donations as $donor): ?>
+                <?php 
+                    $tabs = $donor['tabs'];
+                    $overall += $tabs;
+                ?>
+                <tr>
+                    <td><?= htmlspecialchars($donor['name']) ?></td>
+                    <td><?= $tabs ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+        <br>
+        <div class="mt-3"><h2>Overall tabs: <?=$overall?></h2></div>
+    </div>
 </body>
 </html>
