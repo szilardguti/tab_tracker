@@ -14,10 +14,6 @@ if (file_exists($filename)) {
     $donations = [];
 }
 
-usort($donations, function ($a, $b) {
-    return $b['tabs'] - $a['tabs'];
-}); 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["name"]) && isset($_POST["tabs"])) {
         $name = $_POST["name"];
@@ -35,10 +31,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
+    elseif (isset($_POST["delete"])) {
+        $index = intval($_POST["index"]);
+        if (isset($donations[$index])) {
+            array_splice($donations, $index, 1);
+        }
+    }
 
     file_put_contents($filename, json_encode($donations, JSON_PRETTY_PRINT));
     header("Location: manage.php");
     exit;
+}
+else {
+    usort($donations, function ($a, $b) {
+        return $b['tabs'] - $a['tabs'];
+    });
 }
 
 $overall = 0;
@@ -79,6 +86,11 @@ $overall = 0;
                         <input type="hidden" name="change" value="-1">
                         <input type="hidden" name="update" value="true">
                         <button type="submit">-</button>
+                    </form>
+                    <form method="post" style="display:inline;">
+                        <input type="hidden" name="index" value="<?= $index ?>">
+                        <input type="hidden" name="delete" value="true">
+                        <button type="submit" onclick="return confirm('Are you sure you want to delete this entry?');">🗑️</button>
                     </form>
                 </td>
             </tr>

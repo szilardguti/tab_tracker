@@ -1,5 +1,6 @@
 [
-  { "name": "Tímea", "tabs": 120 },
-  { "name": "Bob", "tabs": 300 },
-  { "name": "Charlie", "tabs": 450 }
+    {
+        "name": "T\u00edmea",
+        "tabs": 90
+    }
 ]
