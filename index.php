@@ -74,11 +74,15 @@ $goal = 1000;
             <?php endforeach; ?>
         </table>
         <div class="mt-3"><h2>Progress</h2></div>
-        <div class="w-80 progress-container">
+        <div class="mt-1">
+            <h3>
+                <?=$overall?>/<?=$goal?> (<?=round(($overall/$goal)*100)?>%) 
+            </h3>
+        </div>
+        <div class="w-80 progress-container mb-3">
             <div class="progress-bar" style="height: 8%;" id="progress-bar"></div>
             <img src="knight_sil.png" class="progress-outline">
         </div>
-        <div class="mt-3"><h2>Overall tabs: <?=$overall?></h2></div>
     </div>
 </body>
 </html>

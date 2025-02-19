@@ -16,12 +16,18 @@ body {
 
 h1 {
   color: #d72638;
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 h2 {
   color: #f8b400;
   font-weight: bold;
+}
+
+h3 {
+  color: #ddd;
+  font-weight: bold;
+  font-size: large;
 }
 
 .table {
