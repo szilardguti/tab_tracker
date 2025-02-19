@@ -95,3 +95,37 @@ h2 {
 input {
   box-sizing: border-box;
 }
+
+/*progress*/
+.progress-container {
+  width: 25vw;
+  height: 50vh;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 0%;
+  position: absolute;
+  bottom: 0;
+  transition: height 0.5s ease-in-out;
+
+  background-image: url("chain.jpg");
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: center bottom;
+}
+
+.progress-outline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
