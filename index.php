@@ -80,7 +80,7 @@ $goal = 1000;
             </h3>
         </div>
         <div class="w-80 progress-container mb-3">
-            <div class="progress-bar" style="height: 8%;" id="progress-bar"></div>
+            <div class="progress-bar" style="height: <?= round(($overall/$goal)*100) ?>%;" id="progress-bar"></div>
             <img src="knight_sil.png" class="progress-outline">
         </div>
     </div>
