@@ -30,7 +30,7 @@ $goal = 1000;
     <div class="container d-flex flex-column justify-content-center align-center w-80">
         <div class="mb-3 mt-4 text-center"><h1 class="title">Tab Tracker</h1></div>
         <div class="mb-3"><h2>Hall of Fame</h2></div>
-        <div class="podium">
+        <div class="podium mt-3">
             <?php if (isset($tops[1])): ?>
                 <div class="second">
                     <div class="medal p-0">🥈</div>
@@ -82,6 +82,12 @@ $goal = 1000;
         <div class="w-80 progress-container mb-3">
             <div class="progress-bar" style="height: <?= round(($overall/$goal)*100) ?>%;" id="progress-bar"></div>
             <img src="knight_sil.png" class="progress-outline">
+        </div>
+        <div class="w-80 mb-3">
+            <h2>Log of important dates:</h2>
+            <div class="w-80 mb-3">
+                <h3><time datetime="2025-02-24 23:00">2025.02.24.</time> - 100!</h3>
+            </div>
         </div>
     </div>
 </body>
