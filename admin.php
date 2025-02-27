@@ -1,8 +1,18 @@
 <?php
+function logLogin($username) {
+    $log_file = 'log.txt';
+    
+    $date = date('Y-m-d H:i:s');
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $device = $_SERVER['HTTP_USER_AGENT'];
+    
+    $log = "[$date] user: $username - ip: $ip - device: $device" . PHP_EOL;
+    file_put_contents($log_file, $log, FILE_APPEND | LOCK_EX);
+}
+
 session_start();
 
 $config_file = 'config.json';
-
 if (!file_exists($config_file)) {
     die("Configuration file missing!");
 }
@@ -21,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     } else {
         $error = "Invalid login!";
+        logLogin($input_user);
     }
 }
 ?>
